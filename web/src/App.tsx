@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Cod2 from "./routes/Cod2";
-import Cod4 from "./routes/Cod4";
-import Index from "./routes";
+import Cod2 from "./pages/Cod2";
+import Cod4 from "./pages/Cod4";
+import Index from "./pages";
 
 export default function App() {
   return (
