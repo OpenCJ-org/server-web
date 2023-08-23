@@ -1,15 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import IndexCoD2 from "./routes/cod2/index";
-import IndexCoD4 from "./routes/cod4/index";
+import Cod2 from "./routes/Cod2";
+import Cod4 from "./routes/Cod4";
 import Index from "./routes";
-import { useEffect } from "react";
 
 export default function App() {
-
-  useEffect(() => {
-    console.log("test");
-  });
-
   return (
     <Router>
       <header className="mx-32">
@@ -23,8 +17,8 @@ export default function App() {
       <main className="mx-32">
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/cod2" element={<IndexCoD2 />} />
-          <Route path="/cod4" element={<IndexCoD4 />} />
+          <Route path="/cod2" element={<Cod2 />} />
+          <Route path="/cod4" element={<Cod4 />} />
         </Routes>
       </main>
       <footer className="mt-auto border-t-4 border-cyan mx-32 flex justify-center items-center h-24">
