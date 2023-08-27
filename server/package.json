@@ -6,14 +6,13 @@
   "scripts": {
     "build": "npx tsc",
     "prod": "node dist/index.js",
-    "start": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "start": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/index.js\"",
     "cod4dbschema": "npx kysely-codegen --url env(COD4_DATABASE_URL) --out-file src/cod4/db/schema.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",

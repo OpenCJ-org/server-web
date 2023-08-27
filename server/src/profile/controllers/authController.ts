@@ -1,9 +1,14 @@
 import admin from "../../firebase/admin";
 
-export async function createUser() {
+export async function createUser(
+  email: string,
+  password: string,
+  userName: string
+) {
   const user = await admin.auth().createUser({
-    email: "test@test.com",
-    password: "test123456",
+    email,
+    password,
+    displayName: userName,
   });
   return user;
 }

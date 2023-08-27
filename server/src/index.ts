@@ -1,5 +1,4 @@
 import express, { Express } from "express";
-import bodyParser from "body-parser";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import compression from "compression";
@@ -11,7 +10,7 @@ import { authRoutes } from "./profile/routes/authRoutes";
 const port = 3002;
 const app: Express = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(compression());
 
 /**
@@ -53,7 +52,7 @@ const options = {
       },
     ],
   },
-  apis: ["./cod4/**/*.ts"],
+  apis: ["./src/cod4/**/*.ts", "./src/profile/**/*.ts"],
 };
 
 const specs = swaggerJsdoc(options);

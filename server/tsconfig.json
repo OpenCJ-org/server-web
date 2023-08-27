@@ -10,5 +10,7 @@
     "noUncheckedIndexedAccess": true,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "baseUrl": "src"
   }
 }
