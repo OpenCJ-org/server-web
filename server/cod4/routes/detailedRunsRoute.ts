@@ -10,7 +10,7 @@ export const detailedRunsRoute = express.Router();
  * tags:
  *   name: DetailedRun
  *   description: The players API
- * /api/cod4/v1/detailedRuns:
+ * /api/cod4/detailedRuns:
  *   get:
  *    summary: Get all runs, with player or map filter
  *    tags: [DetailedRun]
