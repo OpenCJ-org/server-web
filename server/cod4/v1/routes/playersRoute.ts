@@ -16,23 +16,56 @@ export const playersRoute = express.Router();
  *   description: The players API
  * /api/cod4/v1/players:
  *   get:
- *     summary: Get all players
- *     tags: [Players]
- *     responses:
- *       200:
- *         description: All players.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Cod4Player'
- *
+ *    summary: Get all players
+ *    tags: [Players]
+ *    parameters:
+ *      - in: query
+ *        name: offset
+ *        required: true
+ *        default: 0
+ *        schema:
+ *          type: integer
+ *      - in: query
+ *        name: limit
+ *        required: true
+ *        default: 25
+ *        schema:
+ *          type: integer
+ *    responses:
+ *      200:
+ *        description: Found players.
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                items:
+ *                  type: array
+ *                  items:
+ *                    $ref: '#/components/schemas/Cod4Player'
+ *                offset:
+ *                  type: integer
+ *                limit:
+ *                  type: integer
+ *                total:
+ *                  type: integer
  */
 
-playersRoute.get("/", async (_, res) => {
-  const cod4Players = await getAllPlayers();
-  res.send(cod4Players);
+playersRoute.get("/", async (req, res) => {
+  try {
+    const queryParams = z
+      .object({
+        ...paginationValidator,
+      })
+      .parse(req.query);
+
+    const cod4Players = await getAllPlayers(queryParams.offset, queryParams.limit);
+    res.send(cod4Players);
+
+  } catch(e) {
+    res.status(400).send({ error: e });
+  }
+    
 });
 
 /**

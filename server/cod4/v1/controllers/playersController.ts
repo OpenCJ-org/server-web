@@ -2,15 +2,25 @@ import { PaginationResult } from "../../../common/models/paginationResult";
 import { cod4DB } from "../db/cod4DB";
 import { Cod4Player } from "../models/cod4Player";
 
-export async function getAllPlayers() {
+export async function getAllPlayers(offset: number,
+  limit: number) {
   const players = await cod4DB
     .selectFrom("playerInformation")
     .selectAll()
+    .orderBy("playerInformation.playerID")
+    .limit(limit)
+    .offset(offset)
     .execute();
 
-  const cod4Players = players.map((player) => new Cod4Player(player));
+  const count = await cod4DB
+    .selectFrom("playerInformation")
+    .select((eb) => [eb.fn.countAll<number>().as("total")])
+    .executeTakeFirstOrThrow();
 
-  return cod4Players;
+  const cod4Players = players.map((player) => new Cod4Player(player));
+  const pagination = new PaginationResult(cod4Players, offset, limit, count.total)
+
+  return pagination;
 }
 
 export async function getPlayerById(playerId: number) {

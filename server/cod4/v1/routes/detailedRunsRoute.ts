@@ -12,38 +12,47 @@ export const detailedRunsRoute = express.Router();
  *   description: The players API
  * /api/cod4/v1/detailedRuns:
  *   get:
- *     summary: Get all runs, with player or map filter
- *     tags: [DetailedRun]
- *     parameters:
- *      - in: query
- *        name: offset
- *        schema:
- *           type: integer
- *        required: true
- *        default: 0
- *      - in: query
- *        name: limit
- *        schema:
+ *    summary: Get all runs, with player or map filter
+ *    tags: [DetailedRun]
+ *    parameters:
+ *     - in: query
+ *       name: offset
+ *       schema:
  *          type: integer
- *        required: true
- *        default: 25
- *      - in: query
- *        name: playerId
- *        schema:
- *          type: integer
- *      - in: query
- *        name: mapId
- *        schema:
- *          type: integer
- *     responses:
- *       200:
- *         description: All players.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Cod4DetailedRun'
+ *       required: true
+ *       default: 0
+ *     - in: query
+ *       name: limit
+ *       schema:
+ *         type: integer
+ *       required: true
+ *       default: 25
+ *     - in: query
+ *       name: playerId
+ *       schema:
+ *         type: integer
+ *     - in: query
+ *       name: mapId
+ *       schema:
+ *         type: integer
+ *    responses:
+ *      200:
+ *        description: Found players.
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                items:
+ *                  type: array
+ *                  items:
+ *                    $ref: '#/components/schemas/Cod4DetailedRun'
+ *                offset:
+ *                  type: integer
+ *                limit:
+ *                  type: integer
+ *                total:
+ *                  type: integer
  *
  */
 detailedRunsRoute.get("/", async (req, res) => {
