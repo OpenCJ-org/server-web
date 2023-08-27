@@ -5,6 +5,7 @@ import {
   searchMapByName,
 } from "../controllers/mapsController";
 import { z } from "zod";
+import { paginationValidator } from "../../../common/validators/paginationValidator";
 
 export const mapRouter = express.Router();
 
@@ -15,22 +16,54 @@ export const mapRouter = express.Router();
  *   description: The maps managing API
  * /api/cod4/v1/maps:
  *   get:
- *     summary: Get all maps
- *     tags: [Maps]
- *     responses:
- *       200:
- *         description: All maps.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Cod4Map'
+ *    summary: Get all maps
+ *    tags: [Maps]
+ *    parameters:
+ *      - in: query
+ *        name: offset
+ *        required: true
+ *        default: 0
+ *        schema:
+ *          type: integer
+ *      - in: query
+ *        name: limit
+ *        required: true
+ *        default: 25
+ *        schema:
+ *          type: integer
+ *    responses:
+ *      200:
+ *        description: List of maps.
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                items:
+ *                  type: array
+ *                  items:
+ *                    $ref: '#/components/schemas/Cod4Map'
+ *                offset:
+ *                  type: integer
+ *                limit:
+ *                  type: integer
+ *                total:
+ *                  type: integer
  *
  */
-mapRouter.get("/", async (_, res) => {
-  const cod4Map = await getAllMaps();
-  res.send(cod4Map);
+mapRouter.get("/", async (req, res) => {
+  try {
+    const queryParams = z
+      .object({
+        ...paginationValidator,
+      })
+      .parse(req.query);
+
+    const cod4Map = await getAllMaps(queryParams.offset, queryParams.limit);
+    res.send(cod4Map);
+  } catch (e) {
+    res.status(400).send({ error: e });
+  }
 });
 
 /**
@@ -41,17 +74,40 @@ mapRouter.get("/", async (_, res) => {
  *     tags: [Maps]
  *     parameters:
  *      - in: query
+ *        name: offset
+ *        required: true
+ *        default: 0
+ *        schema:
+ *          type: integer
+ *      - in: query
+ *        name: limit
+ *        required: true
+ *        default: 25
+ *        schema:
+ *          type: integer
+ *      - in: query
  *        name: mapname
  *        required: true
  *        schema:
  *           type: string
  *     responses:
  *       200:
- *         description: The map.
+ *         description: Found maps.
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Cod4Map'
+ *               type: object
+ *               properties:
+ *                 items:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Cod4Map'
+ *                 offset:
+ *                   type: integer
+ *                 limit:
+ *                   type: integer
+ *                 total:
+ *                   type: integer
  *       400:
  *        description: Map not found
  */
@@ -59,11 +115,16 @@ mapRouter.get("/search", async (req, res) => {
   try {
     const queryParams = z
       .object({
+        ...paginationValidator,
         mapname: z.string(),
       })
       .parse(req.query);
 
-    const cod4Maps = await searchMapByName(queryParams.mapname);
+    const cod4Maps = await searchMapByName(
+      queryParams.mapname,
+      queryParams.offset,
+      queryParams.limit
+    );
     res.send(cod4Maps);
   } catch (e) {
     res.status(400).send({ error: e });
