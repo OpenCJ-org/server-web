@@ -3,9 +3,9 @@ import bodyParser from "body-parser";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import compression from "compression";
-import { mapRouter } from "./cod4/v1/routes/mapsRoutes";
-import { playersRoute } from "./cod4/v1/routes/playersRoute";
-import { detailedRunsRoute } from "./cod4/v1/routes/detailedRunsRoute";
+import { mapRouter } from "./cod4/routes/mapsRoutes";
+import { playersRoute } from "./cod4/routes/playersRoute";
+import { detailedRunsRoute } from "./cod4/routes/detailedRunsRoute";
 
 const port = 3002;
 const app: Express = express();
@@ -18,9 +18,6 @@ app.use(compression());
  * rate limit?
  * cors?
  * restrict routes to certain urls?
- * authentication?
- * think of better way to return non 200 status codes
- * better way to write schema docs
  */
 
 app.use((req, res, next) => {
@@ -33,9 +30,9 @@ app.use((req, res, next) => {
 });
 
 //Routes
-app.use("/api/cod4/v1/maps", mapRouter);
-app.use("/api/cod4/v1/players", playersRoute);
-app.use("/api/cod4/v1/detailedRuns", detailedRunsRoute);
+app.use("/api/cod4/maps", mapRouter);
+app.use("/api/cod4/players", playersRoute);
+app.use("/api/cod4/detailedRuns", detailedRunsRoute);
 
 const options = {
   definition: {
@@ -53,7 +50,7 @@ const options = {
       },
     ],
   },
-  apis: ["./cod4/v1/**/*.ts"],
+  apis: ["./cod4/**/*.ts"],
 };
 
 const specs = swaggerJsdoc(options);

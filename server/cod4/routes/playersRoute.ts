@@ -59,13 +59,14 @@ playersRoute.get("/", async (req, res) => {
       })
       .parse(req.query);
 
-    const cod4Players = await getAllPlayers(queryParams.offset, queryParams.limit);
+    const cod4Players = await getAllPlayers(
+      queryParams.offset,
+      queryParams.limit
+    );
     res.send(cod4Players);
-
-  } catch(e) {
+  } catch (e) {
     res.status(400).send({ error: e });
   }
-    
 });
 
 /**
