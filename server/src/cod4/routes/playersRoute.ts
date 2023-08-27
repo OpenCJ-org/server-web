@@ -5,7 +5,7 @@ import {
   searchPlayersByName,
 } from "../controllers/playersController";
 import { z } from "zod";
-import { paginationValidator } from "src/common/validators/paginationValidator";
+import { paginationValidator } from "../../common/validators/paginationValidator";
 
 export const playersRoute = express.Router();
 
@@ -14,7 +14,7 @@ export const playersRoute = express.Router();
  * tags:
  *   name: Players
  *   description: The players API
- * /api/cod4/v1/players:
+ * /api/cod4/players:
  *   get:
  *    summary: Get all players
  *    tags: [Players]
@@ -71,7 +71,7 @@ playersRoute.get("/", async (req, res) => {
 
 /**
  * @swagger
- * /api/cod4/v1/players/search:
+ * /api/cod4/players/search:
  *  get:
  *    summary: Search for a player by name
  *    tags: [Players]
@@ -137,7 +137,7 @@ playersRoute.get("/search", async (req, res) => {
 
 /**
  * @swagger
- * /api/cod4/v1/players/{playerId}:
+ * /api/cod4/players/{playerId}:
  *   get:
  *     summary: Get a player by their ID
  *     tags: [Players]

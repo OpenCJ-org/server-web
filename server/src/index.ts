@@ -6,6 +6,7 @@ import compression from "compression";
 import { mapRouter } from "./cod4/routes/mapsRoutes";
 import { playersRoute } from "./cod4/routes/playersRoute";
 import { detailedRunsRoute } from "./cod4/routes/detailedRunsRoute";
+import { authRoutes } from "./profile/routes/authRoutes";
 
 const port = 3002;
 const app: Express = express();
@@ -33,6 +34,8 @@ app.use((req, res, next) => {
 app.use("/api/cod4/maps", mapRouter);
 app.use("/api/cod4/players", playersRoute);
 app.use("/api/cod4/detailedRuns", detailedRunsRoute);
+
+app.use("/api/profile/auth", authRoutes);
 
 const options = {
   definition: {

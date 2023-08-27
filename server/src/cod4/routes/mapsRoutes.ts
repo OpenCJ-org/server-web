@@ -5,7 +5,7 @@ import {
   searchMapByName,
 } from "../controllers/mapsController";
 import { z } from "zod";
-import { paginationValidator } from "src/common/validators/paginationValidator";
+import { paginationValidator } from "../../common/validators/paginationValidator";
 
 export const mapRouter = express.Router();
 
@@ -14,7 +14,7 @@ export const mapRouter = express.Router();
  * tags:
  *   name: Maps
  *   description: The maps managing API
- * /api/cod4/v1/maps:
+ * /api/cod4/maps:
  *   get:
  *    summary: Get all maps
  *    tags: [Maps]
@@ -68,7 +68,7 @@ mapRouter.get("/", async (req, res) => {
 
 /**
  * @swagger
- * /api/cod4/v1/maps/search:
+ * /api/cod4/maps/search:
  *   get:
  *     summary: Search for maps by map name
  *     tags: [Maps]
@@ -133,7 +133,7 @@ mapRouter.get("/search", async (req, res) => {
 
 /**
  * @swagger
- * /api/cod4/v1/maps/{mapId}:
+ * /api/cod4/maps/{mapId}:
  *   get:
  *     summary: Get a map by mapname
  *     tags: [Maps]

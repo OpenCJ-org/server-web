@@ -1,4 +1,4 @@
-import { PaginationResult } from "src/common/models/paginationResult";
+import { PaginationResult } from "../../common/models/paginationResult";
 import { cod4DB } from "../db/cod4DB";
 import { Cod4DetailedRun } from "../models/cod4DetailedRun";
 
