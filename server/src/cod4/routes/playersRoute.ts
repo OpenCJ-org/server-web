@@ -5,7 +5,7 @@ import {
   searchPlayersByName,
 } from "../controllers/playersController";
 import { z } from "zod";
-import { paginationValidator } from "../../../common/validators/paginationValidator";
+import { paginationValidator } from "src/common/validators/paginationValidator";
 
 export const playersRoute = express.Router();
 

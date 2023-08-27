@@ -1,7 +1,7 @@
 import express from "express";
-import { getAllDetailedRunsByPlayerId } from "../controllers/detailedRunsController";
 import { z } from "zod";
-import { paginationValidator } from "../../../common/validators/paginationValidator";
+import { paginationValidator } from "src/common/validators/paginationValidator";
+import { getAllDetailedRunsByPlayerId } from "../controllers/detailedRunsController";
 
 export const detailedRunsRoute = express.Router();
 

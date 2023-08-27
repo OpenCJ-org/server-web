@@ -5,7 +5,7 @@ import {
   searchMapByName,
 } from "../controllers/mapsController";
 import { z } from "zod";
-import { paginationValidator } from "../../../common/validators/paginationValidator";
+import { paginationValidator } from "src/common/validators/paginationValidator";
 
 export const mapRouter = express.Router();
 

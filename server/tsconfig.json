@@ -9,6 +9,7 @@
     "outDir": "./dist",
     "noUncheckedIndexedAccess": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
   }
 }
