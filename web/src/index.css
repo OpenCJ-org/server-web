@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.done {
+    text-decoration: line-through;
+    font-style: italic;
+    opacity: 0.5;
+}
+
+.link {
+    transition: 0.2s;
+    color: theme(colors[cyan]);
+}
+
+.link:hover {
+    padding-left: 4px;
+    border-left: 2px solid theme(colors[cyan]);
+    color: white;
+}
+
+.link-inline {
+    transition: 0.2s;
+    color: theme(colors[cyan]);
+}
+
+.link-inline:hover {
+    border-bottom: 2px solid theme(colors[cyan]);
+    color: white;
+}

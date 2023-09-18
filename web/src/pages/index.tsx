@@ -18,37 +18,34 @@ export default function Index() {
             
             <hr className="my-4"/>
 
-            <h2 className="text-2xl font-bold mb-4">Games</h2>
+            <h2 className="text-2xl font-bold mb-4">Supported Games</h2>
+            <p className="mb-4">At this stage, only CoD4 is supported.</p>
             <ul>
-                <li><Link className="hover:underline text-cyan" to="/cod2">CoD2</Link></li>
-                <li><Link className="hover:underline text-cyan" to="/cod4">CoD4</Link></li>
+                {/*<li><Link className="link text-cyan" to="/cod2">CoD2</Link></li>*/}
+                <li><Link className="link" to="/cod4">CoD4</Link></li>
             </ul>
 
             <hr className="my-4"/>
 
             <h2 className="text-2xl font-bold mb-4">Repositories</h2>
+            <p className="mb-4">The project consists of multiple closely related repositories which are listed below:</p>
             <ul>
-                <li><Link className="hover:underline text-cyan" target="_blank" to="https://github.com/opencj-org/server-gsc">server-gsc</Link></li>
-                <li><Link className="hover:underline text-cyan" target="_blank" to="https://github.com/opencj-org/server-ext">server-ext</Link></li>
-                <li><Link className="hover:underline text-cyan" target="_blank" to="https://github.com/opencj-org/cod4x-server">cod4x-server</Link></li>
-                <li><Link className="hover:underline text-cyan" target="_blank" to="https://github.com/opencj-org/server-db">server-db</Link></li>
-                <li><Link className="hover:underline text-cyan" target="_blank" to="https://github.com/opencj-org/libcod">libcod</Link></li>
-                <li><Link className="hover:underline text-cyan" target="_blank" to="https://github.com/opencj-org/client-mod">client-mod</Link></li>
-                <li><Link className="hover:underline text-cyan" target="_blank" to="https://github.com/opencj-org/server-web">server-web</Link></li>
-                <li><Link className="hover:underline text-cyan" target="_blank" to="https://github.com/opencj-org/discord-integration">discord-integration</Link></li>
+                <li><Link className="link" target="_blank" to="https://github.com/opencj-org/server-gsc">server-gsc</Link></li>
+                <li><Link className="link" target="_blank" to="https://github.com/opencj-org/server-ext">server-ext</Link></li>
+                <li><Link className="link" target="_blank" to="https://github.com/opencj-org/cod4x-server">cod4x-server</Link></li>
+                <li><Link className="link" target="_blank" to="https://github.com/opencj-org/server-db">server-db</Link></li>
+                <li><Link className="link" target="_blank" to="https://github.com/opencj-org/libcod">libcod</Link></li>
+                <li><Link className="link" target="_blank" to="https://github.com/opencj-org/client-mod">client-mod</Link></li>
+                <li><Link className="link" target="_blank" to="https://github.com/opencj-org/server-web">server-web</Link></li>
+                <li><Link className="link" target="_blank" to="https://github.com/opencj-org/discord-integration">discord-integration</Link></li>
             </ul>
 
             <hr className="my-4"/>
 
-            {/*<ul>
-                <li><Link className="hover:underline text-cyan" to="/roadmap">Roadmap</Link></li>
-                <li><Link className="hover:underline text-cyan" to="/roadmap">Statistics</Link></li>
-                <li><Link className="hover:underline text-cyan" to="/roadmap">Maps</Link></li>
-                <li><Link className="hover:underline text-cyan" to="/roadmap">Players</Link></li>
-                <li><Link className="hover:underline text-cyan" to="/roadmap">API</Link></li>
-            </ul>
+            <h2 className="text-2xl font-bold mb-4">Community</h2>
+            <p className="mb-4">We have an open <a className="link-inline" href="https://discord.opencj.org/" target="_blank">Discord Server</a> that is the central hub for organizing and discussing everything related to the project. If you are a developer who wants to get involved with contributing or just a player looking to try the mod go ahead and join!</p>
 
-            <hr className="my-4"/>*/}
+            <hr className="my-4"/>
 
             <h2 className="text-2xl font-bold mb-4">Credits</h2>
             <h3 className="font-bold">Founders</h3>
